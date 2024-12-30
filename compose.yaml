@@ -1,0 +1,11 @@
+services:
+  postgres:
+    image: postgres:12
+    container_name: postgres
+    hostname: database
+    environment:
+      POSTGRES_DB: students
+      POSTGRES_USER: students
+      POSTGRES_PASSWORD: students
+    ports:
+      - "5430:5432"

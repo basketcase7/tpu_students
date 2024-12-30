@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="author_name" id="1">
+        <sql>
+            CREATE TABLE groups
+            (
+                id              UUID         NOT NULL,
+                name            VARCHAR(255) NOT NULL,
+                department      VARCHAR(255) NOT NULL,
+                enrollment_year INTEGER      NOT NULL,
+                CONSTRAINT pk_groups PRIMARY KEY (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet author="author_name" id="2">
+        <sql>
+            CREATE TABLE students
+            (
+                id            UUID         NOT NULL,
+                last_name     VARCHAR(255) NOT NULL,
+                first_name    VARCHAR(255) NOT NULL,
+                middle_name   VARCHAR(255),
+                group_id      UUID         NOT NULL,
+                date_of_birth date         NOT NULL,
+                gender        VARCHAR(255) NOT NULL,
+                status        VARCHAR(255) NOT NULL,
+                CONSTRAINT pk_students PRIMARY KEY (id),
+                FOREIGN KEY (group_id) REFERENCES groups (id)
+            );
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
