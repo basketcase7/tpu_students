@@ -9,3 +9,22 @@ services:
       POSTGRES_PASSWORD: students
     ports:
       - "5430:5432"
+  webapi:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    hostname: webapi
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/students
+      - POSTGRES_USER=students
+      - POSTGRES_PASSWORD=students
+    healthcheck:
+      test: curl http://localhost:8080 || exit 0
+      interval: 10s
+      retries: 5
+      start_period: 15s
+      timeout: 10s
