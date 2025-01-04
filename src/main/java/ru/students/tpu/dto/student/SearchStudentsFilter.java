@@ -9,13 +9,13 @@ import ru.students.tpu.type.StudentStatus;
 
 import java.util.UUID;
 
-public record SearchStudentsDto(
+public record SearchStudentsFilter(
         UUID id,
 
-        @Size(min = 2, max = 50, message = "Фамилия студента должна содержать от 2 до 50 символов")
+        @Size(max = 50, message = "Фамилия студента должна содержать до 50 символов")
         String lastName,
 
-        @Size(min = 2, max = 50, message = "Имя студента должно содержать от 2 до 50 символов")
+        @Size(max = 50, message = "Имя студента должно содержать до 50 символов")
         String firstName,
 
         @Size(max = 50, message = "Отчество студента не должно содержать более 50 символов")

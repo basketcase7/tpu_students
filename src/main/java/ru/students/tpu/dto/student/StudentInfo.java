@@ -7,8 +7,8 @@ import java.util.UUID;
 
 public record StudentInfo(
         UUID id,
-        String firstName,
         String lastName,
+        String firstName,
         String middleName,
         UUID groupId,
         String dateOfBirth,

@@ -1,7 +1,7 @@
 package ru.students.tpu.service;
 
 import ru.students.tpu.dto.student.AddStudentRequest;
-import ru.students.tpu.dto.student.SearchStudentsDto;
+import ru.students.tpu.dto.student.SearchStudentsFilter;
 import ru.students.tpu.dto.student.StudentInfo;
 
 import java.util.List;
@@ -12,5 +12,5 @@ public interface StudentService {
     StudentInfo getStudent(UUID id);
     List<StudentInfo> getAllStudents();
     List<StudentInfo> getAllByGroup(UUID groupId);
-    List<StudentInfo> searchStudentsByParams(SearchStudentsDto searchStudentsDto);
+    List<StudentInfo> searchStudentsByParams(SearchStudentsFilter searchStudentsFilter);
 }

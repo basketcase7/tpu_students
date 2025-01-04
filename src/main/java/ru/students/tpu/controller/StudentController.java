@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.students.tpu.dto.student.AddStudentRequest;
-import ru.students.tpu.dto.student.SearchStudentsDto;
+import ru.students.tpu.dto.student.SearchStudentsFilter;
 import ru.students.tpu.dto.student.StudentInfo;
 import ru.students.tpu.service.StudentService;
 
@@ -45,7 +45,7 @@ public class StudentController {
     }
 
     @GetMapping("/search")
-    public List<StudentInfo> searchStudentsByParams(@ModelAttribute @Valid SearchStudentsDto searchStudentsDto) {
-        return studentService.searchStudentsByParams(searchStudentsDto);
+    public List<StudentInfo> searchStudentsByParams(@ModelAttribute @Valid SearchStudentsFilter searchStudentsFilter) {
+        return studentService.searchStudentsByParams(searchStudentsFilter);
     }
 }

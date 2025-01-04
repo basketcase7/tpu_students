@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.students.tpu.dao.GroupDao;
 import ru.students.tpu.dao.StudentDao;
 import ru.students.tpu.dto.student.AddStudentRequest;
-import ru.students.tpu.dto.student.SearchStudentsDto;
+import ru.students.tpu.dto.student.SearchStudentsFilter;
 import ru.students.tpu.dto.student.StudentInfo;
 import ru.students.tpu.entity.Student;
 import ru.students.tpu.exception.EntityNotFoundException;
@@ -74,19 +74,19 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<StudentInfo> searchStudentsByParams(SearchStudentsDto searchStudentsDto) {
+    public List<StudentInfo> searchStudentsByParams(SearchStudentsFilter searchStudentsFilter) {
 
         List<Student> students = studentDao.searchStudents(
-                searchStudentsDto.id(),
-                searchStudentsDto.lastName(),
-                searchStudentsDto.firstName(),
-                searchStudentsDto.middleName(),
-                searchStudentsDto.groupName(),
-                searchStudentsDto.startBirth(),
-                searchStudentsDto.endBirth(),
-                searchStudentsDto.gender(),
-                searchStudentsDto.status(),
-                searchStudentsDto.yearOfStudying()
+                searchStudentsFilter.id(),
+                searchStudentsFilter.lastName(),
+                searchStudentsFilter.firstName(),
+                searchStudentsFilter.middleName(),
+                searchStudentsFilter.groupName(),
+                searchStudentsFilter.startBirth(),
+                searchStudentsFilter.endBirth(),
+                searchStudentsFilter.gender(),
+                searchStudentsFilter.status(),
+                searchStudentsFilter.yearOfStudying()
         );
 
         if (students.isEmpty()) {
